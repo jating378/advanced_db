@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-05-03 14:45:19 by Eclipse SUMO netedit Version 1.19.0
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- VTypes -->
+    <vType id="DEFAULT_VEHTYPE" vClass="bus" color="blue"/>
+    <vType id="t_0"/>
+    <!-- Vehicles, persons and containers (sorted by depart) -->
+    <trip id="bus1" depart="0.00" from="-225923029#3" to="24968692" via="-225923029#2 -225923029#1 -225923029#0 -30121019#6 -30121019#5 -30121019#4 -30121019#3 -30121019#2 -30121019#1 -30121019#0 -1205203226 -33056650#2 33056649#0 33056649#1 33056649#2 33056649#3 33056649#4 33056649#5 33056649#6 33056649#7 274708951#0 274708951#1 274708951#2 24854403#0 24854403#1 24854403#2 24854403#3 108047446#1 108047446#2 108047446#3 863816629 347967968 863816630#1 863816630#2 156194367#3 1075753299#1 863816627#1 863816627#2 156194368#1">
+        <stop busStop="bs1" duration="10.00"/>
+        <stop busStop="bs2" duration="10.00"/>
+        <stop busStop="bs3" duration="10.00"/>
+        <stop busStop="bs4" duration="10.00"/>
+        <stop busStop="bs5" duration="10.00"/>
+        <stop busStop="bs6" duration="10.00"/>
+        <stop busStop="bs7" duration="10.00"/>
+        <stop busStop="bs8" duration="10.00"/>
+        <stop busStop="bs9" duration="10.00"/>
+        <stop busStop="bs10" duration="10.00"/>
+        <stop busStop="bs11" duration="10.00"/>
+        <stop busStop="bs12" duration="10.00"/>
+        <stop busStop="bs13" duration="10.00"/>
+        <stop busStop="bs14" duration="10.00"/>
+        <stop busStop="bs15" duration="10.00"/>
+        <stop busStop="bs16" duration="10.00"/>
+    </trip>
+    <trip id="bus2" depart="0.00" color="blue" from="400711538" to="-436346681#0" via="375699170 375699171#0 375699171#1 375699171#2 303997946#1 30120827#0 30120827#1 313026281 121674712 99185958 1092910523 99080251#0 225923027 -400711535 -303995836 -400711536 -27385475 -48740711 -145470352 -400711537 -24240267 -422955653#1 -422955653#0 -1025152078#0 -5074429#0 -458455038 -1092910522#1 -1092910522#0 -129869263#5 -129869263#4 -129869263#3 -129869263#2 -129869263#1 -129869263#0 -400711534#3 -400711534#1 -400711534#0 -893598646 -436346682 -436346678#0 -436346681#1">
+        <stop busStop="bs_0" duration="10.00"/>
+        <stop busStop="bs_1" duration="10.00"/>
+        <stop busStop="bs_2" duration="10.00"/>
+        <stop busStop="bs_3" duration="10.00"/>
+        <stop busStop="bs_4" duration="10.00"/>
+        <stop busStop="bs_5" duration="10.00"/>
+        <stop busStop="bs_6" duration="10.00"/>
+        <stop busStop="bs_7" duration="10.00"/>
+        <stop busStop="bs_8" duration="10.00"/>
+        <stop busStop="bs_9" duration="10.00"/>
+        <stop busStop="bs_10" duration="10.00"/>
+        <stop busStop="bs_11" duration="10.00"/>
+        <stop busStop="bs_12" duration="10.00"/>
+    </trip>
+    <trip id="train1" type="DEFAULT_RAILTYPE" depart="0.00" color="black" from="223622331" to="207706129" via="223622351#0 223622351#1 223622351#2 225913951 156199253#1">
+        <stop trainStop="ts_0" duration="10.00"/>
+        <stop trainStop="ts_1" duration="10.00"/>
+        <stop trainStop="ts_2" duration="10.00"/>
+        <stop trainStop="ts_3" duration="10.00"/>
+        <stop trainStop="ts_4" duration="10.00"/>
+    </trip>
+    <trip id="train2" type="DEFAULT_RAILTYPE" depart="0.00" color="black" from="207706125#0" to="223622327#1" via="207706125#1 156197175 156197174#0 156197174#1 223622320 223622327#0"/>
+</routes>
