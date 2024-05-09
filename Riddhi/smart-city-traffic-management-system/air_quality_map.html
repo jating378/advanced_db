@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 500px;
+        }
+
+        #lastUpdated {
+            margin-top: 10px;
+        }
+
+        table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+    </style>
+</head>
+
+<body>
+    <h1>Air Quality Map</h1>
+    <div id="map"></div>
+    <p id="lastUpdated">Data last updated: </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>PM2.5 Value (µg/m³)</th>
+                <th>Air Quality Color</th>
+                <th>Air Quality Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0 - 12</td>
+                <td style="background-color: #7FFF00;"></td>
+                <td>Good</td>
+            </tr>
+            <tr>
+                <td>12.1 - 35.4</td>
+                <td style="background-color: #8EE5EE;"></td>
+                <td>Moderate</td>
+            </tr>
+            <tr>
+                <td>35.5 - 55.4</td>
+                <td style="background-color: #FF6347;"></td>
+                <td>Unhealthy</td>
+            </tr>
+            <tr>
+                <td>Above 55.4</td>
+                <td style="background-color: #f3300d;"></td>
+                <td>Really Unhealthy</td>
+            </tr>
+            <tr>
+                <td>NA</td>
+                <td style="background-color: #D3D3D3;"></td>
+                <td>Data Not Available</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Function to fetch air quality data
+        function fetchAirQualityData() {
+            return fetch('https://api.openaq.org/v1/latest?country=DE&limit=100')
+                .then(response => response.json())
+                .then(data => data.results)
+                .catch(error => {
+                    console.error('Error fetching air quality data:', error);
+                    return [];
+                });
+        }
+
+        // Function to initialize the Leaflet map
+        function initMap() {
+            const map = L.map('map').setView([51.1657, 10.4515], 6);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Fetch air quality data and update map
+            fetchAirQualityData()
+                .then(airQualityData => {
+                    const currentTime = new Date();
+                    document.getElementById('lastUpdated').textContent += currentTime.toLocaleString();
+
+                    airQualityData.forEach(result => {
+                        const city = result.location;
+                        const lat = result.coordinates.latitude;
+                        const lon = result.coordinates.longitude;
+                        const measurements = result.measurements;
+
+                        // Determine air quality color based on PM2.5 level
+                        const pm25Measurement = measurements.find(m => m.parameter === 'pm25');
+                        const pm25Value = pm25Measurement ? parseFloat(pm25Measurement.value) : null;
+                        const airQualityColor = getColorForAirQuality(pm25Value);
+
+                        // Create a circle marker with color-coded fill
+                        const circleMarker = L.circleMarker([lat, lon], {
+                            radius: 10,
+                            fillColor: airQualityColor,
+                            color: '#000',
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.8
+                        }).addTo(map);
+                        circleMarker.bindPopup(`<b>${city}</b><br>Air Quality: PM2.5 ${pm25Value || 'N/A'} µg/m³`);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error initializing map:', error);
+                });
+        }
+
+        // Function to determine color based on PM2.5 value
+        function getColorForAirQuality(pm25Value) {
+            if (pm25Value !== null) {
+                if (pm25Value <= 12) {
+                    return '#7FFF00'; // green
+                } else if (pm25Value <= 35.4) {
+                    return '#8EE5EE'; // Blue
+                } else if (pm25Value <= 55.4) {
+                    return '#FF6347'; // red
+                } else {
+                    return '#FF6347'; // gold
+                }
+            }
+            return '#D3D3D3'; // Light Gray for unknown value
+        }
+        
+        document.addEventListener('DOMContentLoaded', initMap);
+    </script>
+</body>
+
+</html>

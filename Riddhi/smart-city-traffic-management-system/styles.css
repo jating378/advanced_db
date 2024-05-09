@@ -1,0 +1,74 @@
+/* Reset default browser styles */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply custom styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    /* Light gray background */
+    color: #333;
+    /* Dark gray text color */
+}
+
+header {
+    background-color: #007bffbf;
+    /* Blue header background color */
+    color: white;
+    /* White text color */
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    background-color: #343a40;
+    /* Dark gray navigation background color */
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    /* White link color */
+}
+
+nav ul li a:hover {
+    color: #ffc107;
+    /* Yellow link color on hover */
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.about-us {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+    /* Dark gray text color */
+}

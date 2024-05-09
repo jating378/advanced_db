@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Dashboard</title>
+    <link rel="stylesheet" href="air.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Air Quality</h1>
+    </header>
+
+    <nav>
+        <ul>
+            
+            <li><a href="air_quality_map.html">Air Quality Map</a></li>
+
+        </ul>
+    </nav>
+
+
+    <label for="cityFilter">City:</label>
+    <input type="text" id="cityFilter" placeholder="Enter city name">
+
+    <label for="timeFilter">Last Updated Time:</label>
+    <input type="time" id="timeFilter">
+
+    <table id="airQualityTable">
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>NO (µg/m³)</th>
+                <th>O3 (µg/m³)</th>
+                <th>NO2 (µg/m³)</th>
+                <th>PM2.5 (µg/m³)</th>
+                <th>PM10 (µg/m³)</th>
+                <th>Last Updated</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        fetch('https://api.openaq.org/v1/latest?country=DE&limit=100')
+            .then(response => response.json())
+            .then(data => {
+                // Process and update table with air quality data
+                transformData(data.results);
+            })
+            .catch(error => console.error('Error fetching air quality data:', error));
+
+        // Function to transform and update table data
+        function transformData(results) {
+            const tableBody = document.querySelector('#airQualityTable tbody');
+            results.forEach(result => {
+                const city = result.location;
+                const measurements = result.measurements;
+
+                // Extract relevant parameters and values
+                const no = getValueForParameter(measurements, 'no');
+                const o3 = getValueForParameter(measurements, 'o3');
+                const no2 = getValueForParameter(measurements, 'no2');
+                const pm25 = getValueForParameter(measurements, 'pm25');
+                const pm10 = getValueForParameter(measurements, 'pm10');
+                const lastUpdated = new Date(result.measurements[0].lastUpdated);
+
+                const row = `<tr>
+                                <td>${city}</td>
+                                <td>${no || 'N/A'}</td>
+                                <td>${o3 || 'N/A'}</td>
+                                <td>${no2 || 'N/A'}</td>
+                                <td>${pm25 || 'N/A'}</td>
+                                <td>${pm10 || 'N/A'}</td>
+                                <td>${lastUpdated.toLocaleString()}</td>
+                            </tr>`;
+                tableBody.insertAdjacentHTML('beforeend', row);
+            });
+        }
+
+        // Function to extract value for a specific parameter
+        function getValueForParameter(measurements, parameter) {
+            const measurement = measurements.find(m => m.parameter === parameter);
+            return measurement ? measurement.value : null;
+        }
+
+        document.getElementById('cityFilter').addEventListener('input', function (event) {
+            filterTable();
+        });
+
+        document.getElementById('timeFilter').addEventListener('input', function (event) {
+            filterTable();
+        });
+
+
+        function filterTable() {
+            const cityFilterValue = document.getElementById('cityFilter').value.toLowerCase();
+            const timeFilterValue = document.getElementById('timeFilter').value;
+            const rows = document.querySelectorAll('#airQualityTable tbody tr');
+
+            rows.forEach(row => {
+                const cityCell = row.querySelector('td:first-child');
+                const cityText = cityCell.textContent.toLowerCase();
+                const timeCell = row.querySelector('td:last-child');
+                const timeText = timeCell.textContent;
+
+                const cityMatch = cityText.includes(cityFilterValue);
+                const timeMatch = timeText.includes(timeFilterValue);
+
+                if (cityMatch && timeMatch) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

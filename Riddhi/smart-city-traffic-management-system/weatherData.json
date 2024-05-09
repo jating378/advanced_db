@@ -1,0 +1,230 @@
+{
+  "Heidelberg": {
+    "coord": {
+      "lon": 28.3592,
+      "lat": -26.5048
+    },
+    "weather": [
+      {
+        "id": 804,
+        "main": "Clouds",
+        "description": "overcast clouds",
+        "icon": "04d"
+      }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 24.86,
+      "feels_like": 23.92,
+      "temp_min": 24.32,
+      "temp_max": 25.95,
+      "pressure": 1019,
+      "humidity": 20,
+      "sea_level": 1019,
+      "grnd_level": 858
+    },
+    "visibility": 10000,
+    "wind": {
+      "speed": 1.18,
+      "deg": 194,
+      "gust": 0.97
+    },
+    "clouds": {
+      "all": 93
+    },
+    "dt": 1714987400,
+    "sys": {
+      "type": 2,
+      "id": 2005376,
+      "country": "ZA",
+      "sunrise": 1714970010,
+      "sunset": 1715009566
+    },
+    "timezone": 7200,
+    "id": 997151,
+    "name": "Heidelberg",
+    "cod": 200
+  },
+  "Berlin": {
+    "coord": {
+      "lon": 13.4105,
+      "lat": 52.5244
+    },
+    "weather": [
+      {
+        "id": 800,
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "01d"
+      }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 16.51,
+      "feels_like": 15.65,
+      "temp_min": 13.89,
+      "temp_max": 18.42,
+      "pressure": 1007,
+      "humidity": 55
+    },
+    "visibility": 10000,
+    "wind": {
+      "speed": 3.6,
+      "deg": 280
+    },
+    "clouds": {
+      "all": 0
+    },
+    "dt": 1714987148,
+    "sys": {
+      "type": 2,
+      "id": 2011538,
+      "country": "DE",
+      "sunrise": 1714965893,
+      "sunset": 1715020859
+    },
+    "timezone": 7200,
+    "id": 2950159,
+    "name": "Berlin",
+    "cod": 200
+  },
+  "Munich": {
+    "coord": {
+      "lon": 11.5755,
+      "lat": 48.1374
+    },
+    "weather": [
+      {
+        "id": 804,
+        "main": "Clouds",
+        "description": "overcast clouds",
+        "icon": "04d"
+      }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 19.91,
+      "feels_like": 19.37,
+      "temp_min": 18.36,
+      "temp_max": 21.43,
+      "pressure": 994,
+      "humidity": 54
+    },
+    "visibility": 10000,
+    "wind": {
+      "speed": 1.34,
+      "deg": 89,
+      "gust": 3.58
+    },
+    "clouds": {
+      "all": 91
+    },
+    "dt": 1714987260,
+    "sys": {
+      "type": 2,
+      "id": 2090785,
+      "country": "DE",
+      "sunrise": 1714967205,
+      "sunset": 1715020427
+    },
+    "timezone": 7200,
+    "id": 2867714,
+    "name": "Munich",
+    "cod": 200
+  },
+  "Hamburg": {
+    "coord": {
+      "lon": 10,
+      "lat": 53.55
+    },
+    "weather": [
+      {
+        "id": 802,
+        "main": "Clouds",
+        "description": "scattered clouds",
+        "icon": "03d"
+      }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 14.45,
+      "feels_like": 13.83,
+      "temp_min": 13.88,
+      "temp_max": 15.9,
+      "pressure": 1009,
+      "humidity": 72
+    },
+    "visibility": 10000,
+    "wind": {
+      "speed": 3.09,
+      "deg": 300
+    },
+    "clouds": {
+      "all": 40
+    },
+    "dt": 1714987419,
+    "sys": {
+      "type": 1,
+      "id": 1263,
+      "country": "DE",
+      "sunrise": 1714966476,
+      "sunset": 1715021912
+    },
+    "timezone": 7200,
+    "id": 2911298,
+    "name": "Hamburg",
+    "cod": 200
+  },
+  "Mannheim": {
+    "coord": {
+      "lon": 8.4647,
+      "lat": 49.4883
+    },
+    "weather": [
+      {
+        "id": 300,
+        "main": "Drizzle",
+        "description": "light intensity drizzle",
+        "icon": "09d"
+      },
+      {
+        "id": 500,
+        "main": "Rain",
+        "description": "light rain",
+        "icon": "10d"
+      }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 15.64,
+      "feels_like": 15.64,
+      "temp_min": 14.9,
+      "temp_max": 16.34,
+      "pressure": 1006,
+      "humidity": 91
+    },
+    "visibility": 10000,
+    "wind": {
+      "speed": 2.57,
+      "deg": 170
+    },
+    "rain": {
+      "1h": 0.24
+    },
+    "clouds": {
+      "all": 100
+    },
+    "dt": 1714987214,
+    "sys": {
+      "type": 1,
+      "id": 1291,
+      "country": "DE",
+      "sunrise": 1714967702,
+      "sunset": 1715021424
+    },
+    "timezone": 7200,
+    "id": 2873891,
+    "name": "Mannheim",
+    "cod": 200
+  }
+}
